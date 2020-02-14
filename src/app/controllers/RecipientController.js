@@ -92,6 +92,20 @@ class RecipientController {
       complement,
     });
   }
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    const recipients = await Recipient.findByPk(id);
+
+    if (!recipients) {
+      return res.status(404).json({ error: 'Recipient not found.' });
+    }
+
+    await recipients.destroy();
+
+    return res.json({ msg: 'Successful deleted.' });
+  }
 }
 
 export default new RecipientController();

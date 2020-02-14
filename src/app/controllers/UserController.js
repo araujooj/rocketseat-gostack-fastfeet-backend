@@ -1,6 +1,5 @@
 import * as Yup from 'yup';
 import User from '../models/User';
-import File from '../models/File';
 // index - show - store - update - delete
 class UserController {
   async store(req, res) {
@@ -31,14 +30,7 @@ class UserController {
   }
 
   async index(req, res) {
-    const users = await User.findAll({
-      attributes: ['id', 'name', 'email', 'avatar_id'],
-      include: [{
-        model: File,
-        as: 'avatar',
-        attributes: ['name', 'path', 'url'],
-      }],
-    });
+    const users = await User.findAll();
     if (!users) {
       return res.status(404).json({ error: 'Not found any users' });
     }
