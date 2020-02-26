@@ -34,7 +34,7 @@ Aplicação foi criada utilizando [Express](https://expressjs.com/), além utili
 - Lib datefns para o controle de horários
 
 ### **Exemplo**
-`Método de Agendamento: `
+`Método de Retirada: `
 ```js
 async update(req, res) {
     const { id, deliveryId } = req.params;
